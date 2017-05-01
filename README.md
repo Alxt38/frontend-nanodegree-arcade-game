@@ -1,6 +1,23 @@
-frontend-nanodegree-arcade-game
-===============================
+# UDACITY Arcade Game Project
+This project is modeled after the arcade game Frogger. Where the player tries to
+move the game piece up to the river avoiding the bugs that are crossing the 
+screen from left to right at various speeds.  
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Installation
+Clone or download my repository project from github. My github handle is Alxt38, 
+and the game files can be found at the link below. 
+[Github Game Repo](https://github.com/Alxt38/frontend-nanodegree-arcade-game)
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Game Play Rules  
+The object of the game is to move the player to the top row, while avoiding 
+the water bug enemies. If the a player moves into or is hit by the water bugs 
+the player is returned to the starting position. 
+
+The player is moved by using the keyboard **arrow** keys: 
+
+    * &uparrow; (up)    -- moves the player up. 
+    * &downarrow; (down)  -- moves the player down.
+    * &leftarrow; (left)  -- moves the player left. 
+    * &rightarrow; (right) -- moves the player right. 
+
+When the player reaches the top row a banner will display you won. 
