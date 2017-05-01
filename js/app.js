@@ -42,7 +42,7 @@ Enemy.prototype.update = function (dt) {
     }
 
     // See if the bugs hit the player. 
-    checkCollision(this);
+    this.checkCollision(this);
 };
 
 /**
@@ -53,6 +53,26 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
  
+
+
+/**
+ * Method to detect if an enemy collided with the player on the HTML Canvas game
+ * board. If a collision is detected the player will be returned to the starting
+ * position. 
+ * 
+ * @param {type} bug   - enemy bug 
+ * @returns {undefined}
+ */
+Enemy.prototype.checkCollision = function (bug) {
+
+    if (player.y + 130 >= bug.y + 85 &&      // player on top of bug moving down
+            player.y + 85 <= bug.y + 130 &&  // player below bug 
+            player.x + 25 <= bug.x + 100 &&  // player in front of bug
+            player.x + 30 >= bug.x ) {       // player behind bug && moving rt.
+       player.setStartPos(); 
+    }
+
+};
 
 
 /**
@@ -149,22 +169,3 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-/**
- * Method to detect if an enemy collided with the player on the HTML Canvas game
- * board. If a collision is detected the player will be returned to the starting
- * position. 
- * 
- * @param {type} bug   - enemy bug 
- * @returns {undefined}
- */
-var checkCollision = function (bug) {
-
-    if (player.y + 130 >= bug.y + 85 &&      // player on top of bug moving down
-            player.y + 85 <= bug.y + 130 &&  // player below bug 
-            player.x + 25 <= bug.x + 100 &&  // player in front of bug
-            player.x + 30 >= bug.x ) {       // player behind bug && moving rt.
-       player.setStartPos(); 
-    }
-
-};
