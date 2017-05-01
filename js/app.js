@@ -1,5 +1,6 @@
 /**
  *  Enemies the player must avoid 
+ *  
  * @param {type} x   -- HTML Canvas starting X postion
  * @param {type} y   -- HTML Canvas starting Y position
  * @param {type} pace -- speed at which this enemy moves across screen 
@@ -23,7 +24,7 @@ var Enemy = function (x, y, pace) {
  * between the player and this enemy objects. Note this is called for each 
  * enemy.
  *  
- * @param {type} dt
+ * @param {type} dt  used to sync game spd across multiple devices.
  * @returns {undefined}
  */
 Enemy.prototype.update = function (dt) {
@@ -33,7 +34,7 @@ Enemy.prototype.update = function (dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    // move the enemy bug across screen left-to-right across screen
+    // Move the enemy bug across screen left-to-right across screen
     // if off-screen on rt restart left side. 
     this.x += this.pace * dt;
     if (this.x > 500) {
@@ -44,23 +45,18 @@ Enemy.prototype.update = function (dt) {
     checkCollision(this);
 };
 
-// Draw the enemy on the screen, required method for game
+/**
+ * Draws enemy position on screen, given method for proj. 
+ * @returns {undefined}
+ */
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+ 
 
-Enemy.prototype.initialize = function (x, y) {
-    this.x = x;
-    this.y = y;
-};
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 /**
- * 
- * @param {type} x  -- player initial x position on HTML Canvas game board. 
- * @param {type} y  -- player initial y position on HTML Canvas game board. 
+ * Person class player with required methods.
  * @returns {Person}
  */
 var Person = function () {
@@ -82,15 +78,13 @@ Person.prototype.render = function () {
  * @returns {undefined}
  */
 Person.prototype.update = function (dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-
+   
     // Handled by the handleInput method. 
 };
 
 /**
- * Method to set the player's starting position. 
+ * Method to set the player's starting position, as it is called in diff places
+ * in the application. 
  * 
  * @returns {undefined}
  */
@@ -109,7 +103,6 @@ Person.prototype.setStartPos = function() {
  */
 Person.prototype.handleInput = function (key) {
     if ('up' === key) {
-
         if (this.y === 0) {
             window.alert("You WON!");
             player.setStartPos();
@@ -135,7 +128,7 @@ Person.prototype.handleInput = function (key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = new Array();
+var allEnemies = [];
 allEnemies.push(new Enemy(200, 100, 100));
 allEnemies.push(new Enemy(0, 200, 50));
 allEnemies.push(new Enemy(0, 325, 150));
