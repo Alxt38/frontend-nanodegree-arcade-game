@@ -42,7 +42,7 @@ Enemy.prototype.update = function (dt) {
     }
 
     // See if the bugs hit the player. 
-    this.checkCollision(this);
+    this.checkCollision();
 };
 
 /**
@@ -63,12 +63,12 @@ Enemy.prototype.render = function () {
  * @param {type} bug   - enemy bug 
  * @returns {undefined}
  */
-Enemy.prototype.checkCollision = function (bug) {
+Enemy.prototype.checkCollision = function () {
 
-    if (player.y + 130 >= bug.y + 85 &&      // player on top of bug moving down
-            player.y + 85 <= bug.y + 130 &&  // player below bug 
-            player.x + 25 <= bug.x + 100 &&  // player in front of bug
-            player.x + 30 >= bug.x ) {       // player behind bug && moving rt.
+    if (player.y + 130 >= this.y + 85 &&      // player on top of bug moving down
+            player.y + 85 <= this.y + 130 &&  // player below bug 
+            player.x + 25 <= this.x + 100 &&  // player in front of bug
+            player.x + 40 >= this.x ) {       // player behind bug && moving rt.
        player.setStartPos(); 
     }
 
